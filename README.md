@@ -1,4 +1,4 @@
-# SaaS Boiler Plate
+# SaaS Boilerplate
 
 ## Stacks
 
