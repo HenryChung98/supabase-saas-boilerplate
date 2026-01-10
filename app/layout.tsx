@@ -6,6 +6,8 @@ import { DEFAULT_SEO } from "./config/constants";
 import { Toaster } from "sonner";
 import { ScrollToTop } from "@/components/scroll-to-top";
 import { PublicProviders } from "@/contexts/public-providers";
+import { Footer } from "@/components/footer";
+import { NavBar } from "@/components/nav-bar";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
 
@@ -34,7 +36,9 @@ export default function RootLayout({
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         <Suspense>
           <PublicProviders>
+            <NavBar />
             {children}
+            <Footer />
             <Toaster />
             <ScrollToTop />
           </PublicProviders>

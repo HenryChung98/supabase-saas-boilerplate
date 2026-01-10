@@ -11,11 +11,6 @@ export default function Page() {
     <>
       <div>home</div>
       <div>{user ? `signed in as ${user.email}` : "not signed in"}</div>
-      {user && (
-        <Button>
-          <SignOutHandler />
-        </Button>
-      )}
     </>
   );
 }

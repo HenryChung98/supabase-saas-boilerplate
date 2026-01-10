@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { Separator } from "@/components/ui/separator";
 import { Badge } from "@/components/ui/badge";
 import { DEFAULT_SEO } from "@/app/config/constants";
@@ -13,8 +14,20 @@ export const Footer = () => {
           {/* Company Info */}
           <div className="space-y-4">
             <div className="flex items-center gap-2">
-              <h3 className="text-2xl font-bold text-foreground">{DEFAULT_SEO.title}</h3>
-              <Badge variant="secondary">v1.0</Badge>
+              {DEFAULT_SEO.image ? (
+                <Image
+                  src={DEFAULT_SEO.image}
+                  alt="Logo"
+                  loading="eager"
+                  width={120}
+                  height={120}
+                />
+              ) : (
+                <h3 className="text-2xl font-bold text-foreground">{DEFAULT_SEO.title}</h3>
+              )}
+              <Badge variant="secondary">
+                {DEFAULT_SEO.version.split(".").slice(0, 2).join(".")}
+              </Badge>
             </div>
             <p className="text-muted-foreground leading-relaxed">{DEFAULT_SEO.description}</p>
           </div>
