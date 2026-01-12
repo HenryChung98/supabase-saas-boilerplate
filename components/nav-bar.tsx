@@ -14,8 +14,8 @@ import {
 } from "./ui/dropdown-menu";
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 import { User, LogOut, Moon, Sun, Monitor, ChevronDown } from "lucide-react";
-import { SignOutHandler } from "./sign-out-handler";
 import { useTheme } from "next-themes";
+import { useSignOut } from "@/hooks/use-sign-out";
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -29,6 +29,7 @@ import {
 export const NavBar = () => {
   const { user } = useAuth();
   const { theme, setTheme } = useTheme();
+  const { handleSignOut, loading } = useSignOut();
 
   const navConfig = {
     links: [
@@ -180,9 +181,12 @@ export const NavBar = () => {
 
                     <DropdownMenuSeparator />
 
-                    <DropdownMenuItem className="cursor-pointer text-destructive focus:text-destructive">
+                    <DropdownMenuItem
+                      onClick={handleSignOut}
+                      className="cursor-pointer text-destructive focus:text-destructive"
+                    >
                       <LogOut className="mr-2 h-4 w-4" />
-                      <SignOutHandler />
+                      <span>{loading ? "Signing out..." : "Sign out"}</span>
                     </DropdownMenuItem>
                   </DropdownMenuContent>
                 </DropdownMenu>

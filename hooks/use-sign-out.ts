@@ -2,9 +2,8 @@
 import { useState } from "react";
 import { useAuth } from "@/contexts/auth-context";
 
-export const SignOutHandler = ({ className }: { className?: string }) => {
+export const useSignOut = () => {
   const { supabase } = useAuth();
-
   const [loading, setLoading] = useState<boolean>(false);
 
   const handleSignOut = async () => {
@@ -24,9 +23,5 @@ export const SignOutHandler = ({ className }: { className?: string }) => {
     }
   };
 
-  return (
-    <div onClick={handleSignOut} className={`cursor-pointer ${className}`}>
-      {loading ? "Signing out..." : "Sign out"}
-    </div>
-  );
+  return { handleSignOut, loading };
 };
