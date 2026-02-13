@@ -1,4 +1,4 @@
-# SaaS Boilerplate
+# Supabase SaaS Boilerplate
 
 ## Stacks
 
